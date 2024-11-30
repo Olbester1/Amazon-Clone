@@ -33,7 +33,7 @@ pipeline  {
         }
         stage("docker frontend push") {
             steps {
-                echo " ============== pushing amazon-clone-frontend image =================="
+                echo " ============== pushing amazon-clone-backend image =================="
                 sh '''
                 docker push  macnaer/amazon-clone-backend
                 '''
