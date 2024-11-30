@@ -35,3 +35,21 @@ services:
       /opt/mssql-tools18/bin/sqlcmd -S sqlserver -U sa -P Qwerty-1 -C -d master -i docker-entrypoint-initdb.d/init.sql;
       echo "All done!";
       '
+  backend:
+    depends_on:
+      - sqlserver
+    image: macnaer/amazon-clone-backend
+    container_name: backend
+    restart: always
+    ports:
+      - 5034:5034
+
+  frontend:
+    depends_on:
+      - backend
+    image: macnaer/amazon-clone-frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - 80:80
+
